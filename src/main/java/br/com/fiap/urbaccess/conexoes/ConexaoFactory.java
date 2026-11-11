@@ -15,7 +15,7 @@ public class ConexaoFactory {
 
         if (usuario == null || usuario.isBlank() || senha == null || senha.isBlank()) {
             throw new IllegalStateException(
-                    "Configure as variáveis de ambiente DB_USUARIO e DB_SENHA antes de rodar");
+                    "Configure as variáveis de ambiente DB_USUARIO e DB_SENHA antes de rodar!");
         }
 
         // Driver

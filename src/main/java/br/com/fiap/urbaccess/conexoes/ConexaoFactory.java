@@ -1,12 +1,7 @@
 package br.com.fiap.urbaccess.conexoes;
-
-import br.com.fiap.urbaccess.excecoes.ExcecoesConexao;
-import io.github.cdimascio.dotenv.Dotenv;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import br.com.fiap.urbaccess.excecoes.ExcecoesConexao;
 
 public class ConexaoFactory {
 
@@ -14,11 +9,8 @@ public class ConexaoFactory {
     private static final String URL = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl";
 
     public Connection conexao() throws ClassNotFoundException, SQLException {
-
-        Dotenv dotenv = Dotenv.load(); // para carregar o .env na raíz do projeto
-
-        String usuario = dotenv.get("DB_USUARIO");
-        String senha = dotenv.get("DB_SENHA");
+        String usuario = System.getenv("DB_USUARIO");
+        String senha = System.getenv("DB_SENHA");
 
         if (usuario == null || usuario.isBlank() || senha == null || senha.isBlank()) {
             throw new IllegalStateException(

@@ -7,6 +7,7 @@ public class ExcecoesConexao extends Exception{
 
     public ExcecoesConexao(Exception e) {
         super();
+
         if (e.getClass().toString().equals("class java.lang.ClassNotFoundException")) {
             System.out.println("Sem comunicação com o Banco de Dados! ");
 

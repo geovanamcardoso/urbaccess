@@ -1,10 +1,12 @@
 package br.com.fiap.urbaccess.conexoes;
 
+import br.com.fiap.urbaccess.excecoes.ExcecoesConexao;
 import io.github.cdimascio.dotenv.Dotenv;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import br.com.fiap.urbaccess.excecoes.ExcecoesConexao;
 
 public class ConexaoFactory {
 

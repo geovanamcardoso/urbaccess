@@ -30,6 +30,7 @@ public class AvaliacaoDAO {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
         return "Avaliação cadastrada com sucesso!";
     }
 
@@ -41,6 +42,7 @@ public class AvaliacaoDAO {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
         return "Avaliação deletada com sucesso!";
     }
 
@@ -54,6 +56,7 @@ public class AvaliacaoDAO {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Avaliação atualizada com sucesso!";
     }
@@ -68,6 +71,7 @@ public class AvaliacaoDAO {
         while (rs.next()) lista.add(mapear(rs));
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 
@@ -84,6 +88,7 @@ public class AvaliacaoDAO {
         if (rs.next()) a = mapear(rs);
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return a;
     }
 
@@ -101,6 +106,7 @@ public class AvaliacaoDAO {
 
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 

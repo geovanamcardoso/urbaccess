@@ -34,6 +34,7 @@ public class ContestacaoDAO {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Contestação cadastrada com sucesso!";
     }
@@ -46,6 +47,7 @@ public class ContestacaoDAO {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Contestação deletada com sucesso!";
     }
@@ -64,6 +66,7 @@ public class ContestacaoDAO {
 
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
 
         return "Contestação atualizada com sucesso!";
     }
@@ -78,6 +81,7 @@ public class ContestacaoDAO {
         while (rs.next()) lista.add(mapear(rs));
         rs.close();
         stmt.close();
+        minhaConexao.close();
 
         return lista;
     }
@@ -95,6 +99,7 @@ public class ContestacaoDAO {
         if (rs.next()) c = mapear(rs);
         rs.close();
         stmt.close();
+        minhaConexao.close();
 
         return c;
     }
@@ -112,6 +117,7 @@ public class ContestacaoDAO {
         while (rs.next()) lista.add(mapear(rs));
         rs.close();
         stmt.close();
+        minhaConexao.close();
 
         return lista;
     }

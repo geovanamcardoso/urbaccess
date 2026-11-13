@@ -36,6 +36,7 @@ public class EstabelecimentoDAO {
         else stmt.setInt(11, e.getIdResponsavel());
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
         return "Estabelecimento cadastrado com sucesso!";
     }
 
@@ -45,6 +46,7 @@ public class EstabelecimentoDAO {
         stmt.setInt(1, id);
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
         return "Estabelecimento deletado com sucesso!";
     }
 
@@ -64,6 +66,7 @@ public class EstabelecimentoDAO {
         stmt.setInt(9, e.getIdEstabelecimento());
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
         return "Estabelecimento atualizado com sucesso!";
     }
 
@@ -76,6 +79,7 @@ public class EstabelecimentoDAO {
         }
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 
@@ -88,6 +92,7 @@ public class EstabelecimentoDAO {
         if (rs.next()) e = mapear(rs);
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return e;
     }
 

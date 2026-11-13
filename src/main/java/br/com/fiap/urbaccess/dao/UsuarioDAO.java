@@ -30,6 +30,7 @@ public class UsuarioDAO {
         stmt.setDate(7, Date.valueOf(u.getDtCadastro() != null ? u.getDtCadastro() : LocalDate.now()));
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
         return "Usuário cadastrado com sucesso!";
     }
 
@@ -39,6 +40,7 @@ public class UsuarioDAO {
         stmt.setInt(1, id);
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
         return "Usuário deletado com sucesso!";
     }
 
@@ -53,6 +55,7 @@ public class UsuarioDAO {
         stmt.setInt(5, u.getIdUsuario());
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
         return "Usuário atualizado com sucesso!";
     }
 
@@ -75,6 +78,7 @@ public class UsuarioDAO {
         }
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 
@@ -98,6 +102,7 @@ public class UsuarioDAO {
         }
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return u;
     }
 }

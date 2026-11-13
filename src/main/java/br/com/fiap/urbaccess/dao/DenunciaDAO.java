@@ -49,6 +49,7 @@ public class DenunciaDAO {
 
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
 
         return "Denúncia cadastrada com sucesso!";
     }
@@ -59,6 +60,7 @@ public class DenunciaDAO {
         stmt.setInt(1, id);
         stmt.execute();
         stmt.close();
+        minhaConexao.close();
         return "Denúncia deletada com sucesso!";
     }
 
@@ -87,6 +89,8 @@ public class DenunciaDAO {
         stmt.executeUpdate();
         stmt.close();
 
+        minhaConexao.close();
+
         return "Denúncia atualizada com sucesso!";
     }
 
@@ -97,6 +101,7 @@ public class DenunciaDAO {
         stmt.setInt(2, id);
         stmt.executeUpdate();
         stmt.close();
+        minhaConexao.close();
         return "Status atualizado com sucesso!";
     }
 
@@ -107,6 +112,7 @@ public class DenunciaDAO {
         while (rs.next()) lista.add(mapear(rs));
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return lista;
     }
 
@@ -119,6 +125,7 @@ public class DenunciaDAO {
         if (rs.next()) d = mapear(rs);
         rs.close();
         stmt.close();
+        minhaConexao.close();
         return d;
     }
 

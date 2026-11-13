@@ -1,13 +1,14 @@
 package br.com.fiap.urbaccess.main;
 
-import br.com.fiap.urbaccess.dao.UsuarioDAO;
-import br.com.fiap.urbaccess.entities.Usuario;
+import br.com.fiap.urbaccess.dao.*;
+import br.com.fiap.urbaccess.entities.*;
+import br.com.fiap.urbaccess.excecoes.ExcecoesConexao;
+
 import java.time.LocalDate;
 
 public class TesteInserir {
     public static void main(String[] args) throws Exception {
-
-        //int idUsuario, String nome, String email, String senhaHash, String tipoUsuario, String perfilMobilidade, String ativo, LocalDate dtCadastro
+        try{
         Usuario u = new Usuario();
         u.setNome("Talita Oliveira");
         u.setEmail("talita@urbaccess.com");
@@ -17,8 +18,60 @@ public class TesteInserir {
         u.setAtivo("S");
         u.setDtCadastro(LocalDate.now());
 
-        UsuarioDAO dao = new UsuarioDAO();
-        System.out.println(dao.inserir(u));
+        System.out.println(new UsuarioDAO().inserir(u));
+
+        Estabelecimento e = new Estabelecimento();
+        e.setNome("Padaria Pão Vivo");
+        e.setEndereco("Rua das Flores, 120");
+        e.setBairro("Centro");
+        e.setCidade("São Paulo");
+        e.setUf("SP");
+        e.setLatitude(-23.5505);
+        e.setLongitude(-46.6333);
+        e.setNotaAcessibilidade(9.1);
+        e.setDtCadastro(LocalDate.now());
+        e.setIdCategoria(1);
+        e.setIdResponsavel(0);// sem responsável
+
+        System.out.println(new EstabelecimentoDAO().inserir(e));
+
+        Denuncia d = new Denuncia();
+        d.setDescricao("Degrau na entrada sem rampa de acesso.");
+        d.setUrlFoto("https://exemplo.com/foto1.jpg");
+        d.setLatitude(-23.5505);
+        d.setLongitude(-46.6333);
+        d.setStatus("ABERTA");
+        d.setDtAbertura(LocalDate.now());
+        d.setIdUsuario(21);
+        d.setIdEstabelecimento(1);
+        d.setIdRecurso(1);
+        d.setIdModerador(0); // sem moderador
+
+        System.out.println(new DenunciaDAO().inserir(d));
+
+        Avaliacao a = new Avaliacao();
+        a.setComentario("Ótimo acesso! Rampa bem conservada.");
+        a.setNotaCalculada(9.1);
+        a.setDtAvaliacao(LocalDate.now());
+        a.setIdUsuario(21);
+        a.setIdEstabelecimento(1);
+
+        System.out.println(new AvaliacaoDAO().inserir(a));
+
+        Contestacao c = new Contestacao();
+        c.setJustificativa("A rampa foi instalada há duas semanas.");
+        c.setStatus("PENDENTE");
+        c.setParecerAdmin(null);
+        c.setDtContestacao(LocalDate.now());
+        c.setDtAnalise(null);
+        c.setIdUsuario(21);
+        c.setIdDenuncia(1);
+
+        System.out.println(new ContestacaoDAO().inserir(c));
+
+        }catch(Exception e){
+            new ExcecoesConexao(e);
+        }
 
 
     }

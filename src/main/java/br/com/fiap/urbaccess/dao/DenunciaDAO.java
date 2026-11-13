@@ -62,6 +62,34 @@ public class DenunciaDAO {
         return "Denúncia deletada com sucesso!";
     }
 
+    public String atualizar(Denuncia d) throws SQLException {
+        PreparedStatement stmt = minhaConexao.prepareStatement(
+                "UPDATE DENUNCIA SET DESCRICAO = ?, URL_FOTO = ?, STATUS = ?, " +
+                        "DESCRICAO_CORRECAO = ?, URL_FOTO_CORRECAO = ?, " +
+                        "DT_PRAZO = ?, DT_RESOLUCAO = ?, ID_MODERADOR = ? " +
+                        "WHERE ID_DENUNCIA = ?");
+        stmt.setString(1, d.getDescricao());
+        stmt.setString(2, d.getUrlFoto());
+        stmt.setString(3, d.getStatus());
+        stmt.setString(4, d.getDescricaoCorrecao());
+        stmt.setString(5, d.getUrlFotoCorrecao());
+
+        if (d.getDtPrazo() != null) stmt.setDate(6, Date.valueOf(d.getDtPrazo()));
+        else stmt.setNull(6, Types.DATE);
+
+        if (d.getDtResolucao() != null) stmt.setDate(7, Date.valueOf(d.getDtResolucao()));
+        else stmt.setNull(7, Types.DATE);
+
+        if (d.getIdModerador() == 0) stmt.setNull(8, Types.INTEGER);
+        else stmt.setInt(8, d.getIdModerador());
+        stmt.setInt(9, d.getIdDenuncia());
+
+        stmt.executeUpdate();
+        stmt.close();
+
+        return "Denúncia atualizada com sucesso!";
+    }
+
     public String atualizarStatus(int id, String novoStatus) throws SQLException {
         PreparedStatement stmt = minhaConexao.prepareStatement(
                 "UPDATE DENUNCIA SET STATUS = ? WHERE ID_DENUNCIA = ?");

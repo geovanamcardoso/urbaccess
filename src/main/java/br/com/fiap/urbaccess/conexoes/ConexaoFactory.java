@@ -10,6 +10,7 @@ public class ConexaoFactory {
 
     public Connection conexao() throws ClassNotFoundException, SQLException {
         String usuario = System.getenv("DB_USUARIO");
+
         String senha = System.getenv("DB_SENHA");
 
         if (usuario == null || usuario.isBlank() || senha == null || senha.isBlank()) {

@@ -35,6 +35,13 @@ public class DenunciaController {
         return ResponseEntity.created(location).build();
     }
 
+    @PutMapping
+    public ResponseEntity<Void> atualizar(@RequestBody Denuncia d)
+            throws SQLException, ClassNotFoundException {
+        denunciaBo.atualizarBo(d);
+        return ResponseEntity.ok().build();
+    }
+
     @PatchMapping("/{id}/status")
     public ResponseEntity<Void> atualizarStatus(
             @PathVariable int id,

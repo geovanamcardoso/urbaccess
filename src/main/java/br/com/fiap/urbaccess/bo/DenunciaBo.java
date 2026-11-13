@@ -23,6 +23,11 @@ public class DenunciaBo {
         dao.inserir(d);
     }
 
+    public void atualizarBo(Denuncia d) throws SQLException, ClassNotFoundException {
+        DenunciaDAO dao = new DenunciaDAO();
+        dao.atualizar(d);
+    }
+
     public void atualizarStatusBo(int id, String novoStatus)
             throws SQLException, ClassNotFoundException {
         DenunciaDAO dao = new DenunciaDAO();

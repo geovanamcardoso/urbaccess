@@ -10,7 +10,7 @@ public class TesteAtualizar {
         try {
 
             Usuario u = new Usuario();
-            u.setIdUsuario(21);
+            u.setIdUsuario(9);
             u.setNome("Talita Oliveira Atualizada");
             u.setTipoUsuario("ADMIN");
             u.setPerfilMobilidade("VISUAL");
@@ -35,7 +35,7 @@ public class TesteAtualizar {
             d.setUrlFoto("https://exemplo.com/foto2.jpg");
             d.setStatus("EM_PRAZO");
             d.setDtPrazo(LocalDate.now().plusDays(10));
-            d.setIdModerador(21);
+            d.setIdModerador(9);
             System.out.println(new DenunciaDAO().atualizar(d));
 
             Avaliacao a = new Avaliacao();

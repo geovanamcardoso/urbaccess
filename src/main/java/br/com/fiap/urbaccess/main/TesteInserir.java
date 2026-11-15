@@ -11,7 +11,7 @@ public class TesteInserir {
         try{
         Usuario u = new Usuario();
         u.setNome("Talita Oliveira");
-        u.setEmail("talita@urbaccess.com");
+        u.setEmail("tali@urbaccess.com");
         u.setSenhaHash("senha123");
         u.setTipoUsuario("CIDADAO");
         u.setPerfilMobilidade("CADEIRANTE");
@@ -42,7 +42,7 @@ public class TesteInserir {
         d.setLongitude(-46.6333);
         d.setStatus("ABERTA");
         d.setDtAbertura(LocalDate.now());
-        d.setIdUsuario(21);
+        d.setIdUsuario(9);
         d.setIdEstabelecimento(1);
         d.setIdRecurso(1);
         d.setIdModerador(0); // sem moderador
@@ -53,7 +53,7 @@ public class TesteInserir {
         a.setComentario("Ótimo acesso! Rampa bem conservada.");
         a.setNotaCalculada(9.1);
         a.setDtAvaliacao(LocalDate.now());
-        a.setIdUsuario(21);
+        a.setIdUsuario(9);
         a.setIdEstabelecimento(1);
 
         System.out.println(new AvaliacaoDAO().inserir(a));
@@ -64,7 +64,7 @@ public class TesteInserir {
         c.setParecerAdmin(null);
         c.setDtContestacao(LocalDate.now());
         c.setDtAnalise(null);
-        c.setIdUsuario(21);
+        c.setIdUsuario(9);
         c.setIdDenuncia(1);
 
         System.out.println(new ContestacaoDAO().inserir(c));
